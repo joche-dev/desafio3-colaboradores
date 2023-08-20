@@ -1,0 +1,42 @@
+#root {
+  padding: 0 0.5rem;
+}
+
+.buscador,
+.listado,
+.formulario {
+  padding: 0;
+}
+
+table {
+  font-size: 0.7rem;
+}
+
+.table tbody tr:hover td {
+  background: rgba(128, 128, 128, 0.3);
+}
+
+input {
+  border-color: #999 !important;
+}
+
+button {
+  background-color: #6610f2 !important;
+  color: #fff !important;
+}
+
+button:hover {
+  background-color: #6f42c1 !important;
+}
+
+@media screen and (min-width: 992px) {
+  .listado {
+    padding-right: 1rem;
+  }
+  .formulario {
+    padding-left: 1rem;
+  }
+  table {
+    font-size: 1rem;
+  }
+}
