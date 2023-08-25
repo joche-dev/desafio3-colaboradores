@@ -12,8 +12,6 @@ export default function Listado({ data }) {
     </tr>
   ));
 
-  console.log(colaboradores)
-
   return (
     <div className="table-responsive col-12 col-lg-8 ">
       <table className="table">
