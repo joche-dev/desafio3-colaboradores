@@ -21,7 +21,7 @@ export default function Formulario() {
           <input type="text" className="form-control" id="inputTelefono" placeholder="Teléfono del colaborador"/>
         </div>
         <div className="d-grid mb-3">
-          <button type="submit" class="btn">Agregar Colaborador</button>
+          <button type="submit" className="btn">Agregar Colaborador</button>
         </div>
       </form>
     </div>

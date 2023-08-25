@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import BaseColaboradores from './BaseColaboradores';
+import {BaseColaboradores} from './BaseColaboradores';
 import Buscador from './componentes/Buscador';
 import Listado from './componentes/Listado';
 import Formulario from './componentes/Formulario';

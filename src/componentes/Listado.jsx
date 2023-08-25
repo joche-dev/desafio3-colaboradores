@@ -1,13 +1,22 @@
 import React from 'react';
 
 export default function Listado({ data }) {
-  const dataColaboradores = data;
-  console.log(dataColaboradores);
+
+  const colaboradores = data.map((colaborador) => (
+    <tr key={colaborador.id}>
+      <td>{colaborador.nombre}</td>
+      <td>{colaborador.correo}</td>
+      <td>{colaborador.edad}</td>
+      <td>{colaborador.cargo}</td>
+      <td>{colaborador.telefono}</td>
+    </tr>
+  ));
+
+  console.log(colaboradores)
 
   return (
-    <div className="listado col-12 col-lg-8">
+    <div className="table-responsive col-12 col-lg-8 ">
       <table className="table">
-        {/* <thead  className='border-bottom border-secondary'> */}
         <thead>
           <tr>
             <th>Nombre</th>
@@ -17,28 +26,8 @@ export default function Listado({ data }) {
             <th>Telefono</th>
           </tr>
         </thead>
-        <tbody> 
-          <tr>
-            <td>Leo Grande</td>
-            <td>lgrande@gmail.com</td>
-            <td>35</td>
-            <td>Operador</td>
-            <td>999999999</td>
-          </tr>
-          <tr>
-            <td>Leo Grande</td>
-            <td>lgrande@gmail.com</td>
-            <td>35</td>
-            <td>Operador</td>
-            <td>999999999</td>
-          </tr>
-          <tr>
-            <td>Leo Grande</td>
-            <td>lgrande@gmail.com</td>
-            <td>35</td>
-            <td>Operador</td>
-            <td>999999999</td>
-          </tr>
+        <tbody>
+          {colaboradores}
         </tbody>
       </table>
     </div>

@@ -3,7 +3,7 @@
 }
 
 .buscador,
-.listado,
+.table-responsive,
 .formulario {
   padding: 0;
 }
@@ -30,7 +30,7 @@ button:hover {
 }
 
 @media screen and (min-width: 992px) {
-  .listado {
+  .table-responsive {
     padding-right: 1rem;
   }
   .formulario {
