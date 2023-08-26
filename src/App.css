@@ -40,3 +40,20 @@ button:hover {
     font-size: 1rem;
   }
 }
+
+.div-listado {
+  width: 70%;
+}
+
+.div-form-alert {
+  width: 30%;
+}
+
+.listado {
+  width: 100%;
+}
+
+.formulario {
+  width: 100%;
+}
+

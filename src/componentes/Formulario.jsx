@@ -66,7 +66,7 @@ export default function Formulario({addAlert}) {
       });
     }
 
-    console.log(addAlert);
+    //console.log(addAlert);
 
   }
 

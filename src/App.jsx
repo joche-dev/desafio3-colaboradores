@@ -26,9 +26,13 @@ function App() {
       <h1 className="my-4">Lista de Colaboradores</h1>
       <Buscador />
       <div className="row row-cols-2 m-0">
-        <Listado data={baseColaboradores} />
-          <Formulario addAlert={addAlert}/>
-          <Alert alerta={alert}/>
+        <div className='div-listado'>
+          <Listado data={baseColaboradores} />
+        </div>
+          <div className='div-form-alert'>
+            <Formulario className="formulario" addAlert={addAlert}/>
+            <Alert className="alert" alerta={alert}/>
+          </div>
       </div>
     </>
   );
