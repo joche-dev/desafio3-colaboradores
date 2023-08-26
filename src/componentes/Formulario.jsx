@@ -31,7 +31,7 @@ export default function Formulario({addAlert}) {
       setDatosColaborador({ ...datosColaborador, telefColab: e.target.value });
     }
 
-    // console.log(datosColaborador);
+    console.log(datosColaborador);
 
   }
 
@@ -46,7 +46,7 @@ export default function Formulario({addAlert}) {
     if (
       datosColaborador.nombreColab === '' ||
       datosColaborador.emailColab === '' ||
-      datosColaborador.edadColab === null ||
+      datosColaborador.edadColab === '' ||
       datosColaborador.cargoColab === '' ||
       datosColaborador.telefColab === ''
     ) {
@@ -75,7 +75,7 @@ export default function Formulario({addAlert}) {
       });
     }
 
-    //console.log(addAlert);
+    console.log(addAlert);
 
   }
 
