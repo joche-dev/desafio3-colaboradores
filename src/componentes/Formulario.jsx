@@ -2,15 +2,11 @@ import React from 'react'
 
 import { useState } from 'react';
 
-export default function Formulario(alerta) {
+import Alert from './Alert/Alert';
 
-  const [datosColaborador, setDatosColaborador] = useState({
-    nombreColab: "",
-    emailColab: "",
-    edadColab: "",
-    cargoColab: "",
-    telefColab: ""
-  });
+export default function Formulario({addAlert}) {
+
+  const [datosColaborador, setDatosColaborador] = useState({});
 
   function handlerInputs(e) {
     if (e.target.id === "inputNombre") {
@@ -31,7 +27,7 @@ export default function Formulario(alerta) {
       setDatosColaborador({ ...datosColaborador, telefColab: e.target.value });
     }
 
-    //console.log(datosColaborador);
+    console.log(datosColaborador);
 
   }
 
@@ -39,37 +35,53 @@ export default function Formulario(alerta) {
 
     e.preventDefault();
 
+    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    const regexTelef = /^[0-9]{9}$/;
+
     if (datosColaborador.nombreColab === '' || datosColaborador.emailColab === '' || datosColaborador.edadColab === '' || datosColaborador.cargoColab === '' || datosColaborador.telefColab === '') {
-      alerta({
+      addAlert({
         texto: 'Completar todos los campos',
         tipo: 'alert-danger',
         estado: true,
       });
-
-    } else {
-      alerta({
+    } else if (!regexEmail.test(datosColaborador.emailColab)) {
+      addAlert({
+        texto: 'Correo electrónico no válido',
+        tipo: 'alert-danger',
+        estado: true,
+      });
+    } else if (!regexTelef.test(datosColaborador.telefColab)) {
+      addAlert({
+        texto: 'Teléfono debe tener 9 dígitos',
+        tipo: 'alert-danger',
+        estado: true,
+      });
+    }
+    else {
+      addAlert({
         texto: 'Colaborador Agregado',
         tipo: 'alert-success',
         estado: true,
       });
     }
 
-    console.log(alerta);
-  }
+    console.log(addAlert);
 
+  }
 
   return (
     <div className='formulario col-12 col-lg-4'>
       <h3>Agregar Colaborador</h3>
 
-      <form onSubmit={(e) => validandoDatos(e)} >
+      <form noValidate onSubmit={(e) => validandoDatos(e)}>
 
         <div className="mb-3">
           <input onChange={(e) => handlerInputs(e)} type="text" className="form-control" id="inputNombre" placeholder="Nombre del colaborador" />
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="email" className="form-control" id="inputEmail" placeholder="Email del colaborador" />
+          <input onChange={(e) => handlerInputs(e)} type="email" className="form-control" id="inputEmail" placeholder="Email del colaborador" pattern=".*"/>
         </div>
 
         <div className="mb-3">
@@ -89,6 +101,8 @@ export default function Formulario(alerta) {
         </div>
 
       </form>
+
+      <Alert alerta={alert}/>
 
     </div>
   )
