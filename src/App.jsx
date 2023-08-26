@@ -10,13 +10,14 @@ import { useState } from 'react';
 
 function App() {
   const [baseColaboradores, setBaseColaboradores] = useState(BaseColaboradores);
+  const [colaboradoresFiltrado, setColaboradoresFiltrado] = useState(baseColaboradores)
 
   return (
     <>
       <h1 className="my-4">Lista de Colaboradores</h1>
-      <Buscador />
+      <Buscador data={baseColaboradores} dataFilter={setColaboradoresFiltrado}/>
       <div className="row row-cols-2 m-0">
-        <Listado data={baseColaboradores} />
+        <Listado data={colaboradoresFiltrado} />
         <Formulario />
         <Alert />
       </div>
