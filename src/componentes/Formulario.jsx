@@ -2,11 +2,15 @@ import React from 'react'
 
 import { useState } from 'react';
 
-import Alert from './Alert/Alert';
-
 export default function Formulario({addAlert}) {
 
-  const [datosColaborador, setDatosColaborador] = useState({});
+  const [datosColaborador, setDatosColaborador] = useState({
+    nombreColab: "",
+    emailColab: "",
+    edadColab: "",
+    cargoColab: "",
+    telefColab: ""
+  });
 
   function handlerInputs(e) {
     if (e.target.id === "inputNombre") {
@@ -27,7 +31,7 @@ export default function Formulario({addAlert}) {
       setDatosColaborador({ ...datosColaborador, telefColab: e.target.value });
     }
 
-    console.log(datosColaborador);
+    // console.log(datosColaborador);
 
   }
 
@@ -39,7 +43,13 @@ export default function Formulario({addAlert}) {
 
     const regexTelef = /^[0-9]{9}$/;
 
-    if (datosColaborador.nombreColab === '' || datosColaborador.emailColab === '' || datosColaborador.edadColab === '' || datosColaborador.cargoColab === '' || datosColaborador.telefColab === '') {
+    if (
+      datosColaborador.nombreColab === '' ||
+      datosColaborador.emailColab === '' ||
+      datosColaborador.edadColab === null ||
+      datosColaborador.cargoColab === '' ||
+      datosColaborador.telefColab === ''
+    ) {
       addAlert({
         texto: 'Completar todos los campos',
         tipo: 'alert-danger',
@@ -57,8 +67,7 @@ export default function Formulario({addAlert}) {
         tipo: 'alert-danger',
         estado: true,
       });
-    }
-    else {
+    } else {
       addAlert({
         texto: 'Colaborador Agregado',
         tipo: 'alert-success',
@@ -85,7 +94,7 @@ export default function Formulario({addAlert}) {
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="text" className="form-control" id="inputEdad" placeholder="Edad del colaborador" />
+          <input onChange={(e) => handlerInputs(e)} type="number" className="form-control" id="inputEdad" placeholder="Edad del colaborador" />
         </div>
 
         <div className="mb-3">
@@ -101,8 +110,6 @@ export default function Formulario({addAlert}) {
         </div>
 
       </form>
-
-      <Alert alerta={alert}/>
 
     </div>
   )
