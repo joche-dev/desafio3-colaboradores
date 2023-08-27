@@ -12,12 +12,14 @@ function App() {
   const [baseColaboradores, setBaseColaboradores] = useState(BaseColaboradores);
   const [colaboradoresFiltrado, setColaboradoresFiltrado] = useState(baseColaboradores)
 
+
+
   return (
     <>
       <h1 className="my-4">Lista de Colaboradores</h1>
       <Buscador data={baseColaboradores} dataFilter={setColaboradoresFiltrado}/>
       <div className="row row-cols-2 m-0">
-        <Listado data={colaboradoresFiltrado} />
+        <Listado data={baseColaboradores} setData={setBaseColaboradores} dataFilter={colaboradoresFiltrado} setDataFilter={setColaboradoresFiltrado}/>
         <Formulario />
         <Alert />
       </div>

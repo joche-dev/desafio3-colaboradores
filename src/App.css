@@ -12,7 +12,7 @@ table {
   font-size: 0.7rem;
 }
 
-.table tbody tr:hover td {
+tr:hover td {
   background: rgba(128, 128, 128, 0.3);
 }
 
@@ -27,6 +27,11 @@ button {
 
 button:hover {
   background-color: #6f42c1 !important;
+}
+
+.fa-solid:hover {
+  color: #e63946;
+  transition: color 0.3s;
 }
 
 @media screen and (min-width: 992px) {
