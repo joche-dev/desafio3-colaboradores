@@ -5,7 +5,7 @@ import { BaseColaboradores } from './BaseColaboradores';
 import Buscador from './componentes/Buscador';
 import Listado from './componentes/Listado';
 import Formulario from './componentes/Formulario';
-import Alert from './componentes/Alert/Alert';
+import Alert from './componentes/Alert';
 import { useState } from 'react';
 
 function App() {
@@ -25,12 +25,12 @@ function App() {
 
   return (
     <>
-      <h1 className="my-4">Lista de Colaboradores</h1>
+      <h1 className="my-4"><i class="fa-solid fa-user-group"></i> Lista de Colaboradores</h1>
       <Buscador
         data={baseColaboradores}
         dataFilter={setColaboradoresFiltrado}
       />
-      <div className="row row-cols-2 m-0">
+      <div className="row row-cols-2 justify-content-end m-0">
         <Listado
           data={baseColaboradores}
           setData={setBaseColaboradores}

@@ -1,10 +1,12 @@
 #root {
-  padding: 0 0.5rem;
+  padding: 0.5rem;
+  height: 100vh;
 }
 
 .buscador,
 .table-responsive,
-.formulario {
+.formulario,
+.alert-box {
   padding: 0;
 }
 
@@ -13,7 +15,8 @@ table {
 }
 
 tr:hover td {
-  background: rgba(128, 128, 128, 0.3);
+  background-color: #ddd;
+  transition: background-color 0.3s;
 }
 
 input {
@@ -27,42 +30,30 @@ button {
 
 button:hover {
   background-color: #6f42c1 !important;
+  transition: background-color 0.3s;
 }
 
-.fa-solid:hover {
+.fa-trash-can:hover {
   color: #e63946;
   transition: color 0.3s;
 }
 
+.display-none {
+  display: none;
+}
+
 @media screen and (min-width: 992px) {
-  .table-responsive {
-    padding-right: 1rem;
-  }
-  .formulario {
-    padding-left: 1rem;
+  #root {
+    padding: 1rem 2rem;
   }
   table {
     font-size: 1rem;
   }
+  .table-responsive {
+    padding-right: 1rem;
+  }
+  .formulario,
+  .alert-box {
+    padding-left: 1rem;
+  }
 }
-
-/* .div-listado {
-  width: 70%;
-}
-
-.div-form-alert {
-  width: 30%;
-}
-
-.listado {
-  width: 100%;
-}
-
-.formulario {
-  width: 100%;
-}
-
-.alert {
-  width: 100%;
-} */
-

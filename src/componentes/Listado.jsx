@@ -38,6 +38,7 @@ export default function Listado({ data, setData, dataFilter, setDataFilter }) {
             <th>Edad</th>
             <th>Cargo</th>
             <th>Telefono</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{colaboradores}</tbody>
