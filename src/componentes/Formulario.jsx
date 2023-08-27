@@ -1,35 +1,38 @@
 import React from 'react'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function Formulario({addAlert}) {
+export default function Formulario({ addAlert, setData, data }) {
 
   const [datosColaborador, setDatosColaborador] = useState({
-    nombreColab: "",
-    emailColab: "",
-    edadColab: "",
-    cargoColab: "",
-    telefColab: ""
+    nombre: "",
+    correo: "",
+    edad: "",
+    cargo: "",
+    telefono: ""
   });
 
   function handlerInputs(e) {
+
     if (e.target.id === "inputNombre") {
-      setDatosColaborador({ ...datosColaborador, nombreColab: e.target.value });
+      setDatosColaborador({ ...datosColaborador, nombre: e.target.value });
     }
 
     if (e.target.id === "inputEmail") {
-      setDatosColaborador({ ...datosColaborador, emailColab: e.target.value });
+      setDatosColaborador({ ...datosColaborador, correo: e.target.value });
     }
 
     if (e.target.id === "inputEdad") {
-      setDatosColaborador({ ...datosColaborador, edadColab: e.target.value });
+      setDatosColaborador({ ...datosColaborador, edad: e.target.value });
     }
     if (e.target.id === "inputCargo") {
-      setDatosColaborador({ ...datosColaborador, cargoColab: e.target.value });
+      setDatosColaborador({ ...datosColaborador, cargo: e.target.value });
     }
     if (e.target.id === "inputTelefono") {
-      setDatosColaborador({ ...datosColaborador, telefColab: e.target.value });
+      setDatosColaborador({ ...datosColaborador, telefono: e.target.value });
     }
+
+    //setDatosColaborador({ ...datosColaborador, id: (parseInt(data[data.length-1].id)+1).toString()});
 
     console.log(datosColaborador);
 
@@ -44,24 +47,24 @@ export default function Formulario({addAlert}) {
     const regexTelef = /^[0-9]{9}$/;
 
     if (
-      datosColaborador.nombreColab === '' ||
-      datosColaborador.emailColab === '' ||
-      datosColaborador.edadColab === '' ||
-      datosColaborador.cargoColab === '' ||
-      datosColaborador.telefColab === ''
+      datosColaborador.nombre === '' ||
+      datosColaborador.correo === '' ||
+      datosColaborador.edad === '' ||
+      datosColaborador.cargo === '' ||
+      datosColaborador.telefono === ''
     ) {
       addAlert({
         texto: 'Completar todos los campos',
         tipo: 'alert-danger',
         estado: true,
       });
-    } else if (!regexEmail.test(datosColaborador.emailColab)) {
+    } else if (!regexEmail.test(datosColaborador.correo)) {
       addAlert({
         texto: 'Correo electrónico no válido',
         tipo: 'alert-danger',
         estado: true,
       });
-    } else if (!regexTelef.test(datosColaborador.telefColab)) {
+    } else if (!regexTelef.test(datosColaborador.telefono)) {
       addAlert({
         texto: 'Teléfono debe tener 9 dígitos',
         tipo: 'alert-danger',
@@ -72,12 +75,42 @@ export default function Formulario({addAlert}) {
         texto: 'Colaborador Agregado',
         tipo: 'alert-success',
         estado: true,
+      }
+      );
+
+      const newId = (parseInt(data[data.length - 1].id) + 1).toString();
+
+      //datosColaborador.id = (parseInt(data[data.length-1].id)+1).toString()
+
+      //setData([...data,datosColaborador])
+
+      setData([...data, { ...datosColaborador, id: newId }]);
+
+      setDatosColaborador({
+        nombre: "",
+        correo: "",
+        edad: "",
+        cargo: "",
+        telefono: ""
       });
+
     }
 
-    console.log(addAlert);
+    //console.log(addAlert);
+
+    //console.log(data);
 
   }
+
+  useEffect(() => {
+    setDatosColaborador({
+      nombre: "",
+      correo: "",
+      edad: "",
+      cargo: "",
+      telefono: ""
+    });
+  }, [data]);
 
   return (
     <div className='formulario col-12 col-lg-4'>
@@ -90,7 +123,7 @@ export default function Formulario({addAlert}) {
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="email" className="form-control" id="inputEmail" placeholder="Email del colaborador" pattern=".*"/>
+          <input onChange={(e) => handlerInputs(e)} type="email" className="form-control" id="inputEmail" placeholder="Email del colaborador" pattern=".*" />
         </div>
 
         <div className="mb-3">
@@ -106,7 +139,7 @@ export default function Formulario({addAlert}) {
         </div>
 
         <div className="d-grid mb-3">
-          <button type="submit" class="btn">Agregar Colaborador</button>
+          <button type="submit" className="btn">Agregar Colaborador</button>
         </div>
 
       </form>
