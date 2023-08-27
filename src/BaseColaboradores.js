@@ -1,4 +1,4 @@
-const BaseColaboradores = [
+export const BaseColaboradores = [
   {
     id: '1',
     nombre: 'Juan Soto',
@@ -24,5 +24,3 @@ const BaseColaboradores = [
     telefono: '99226644',
   },
 ];
-
-export default BaseColaboradores;
