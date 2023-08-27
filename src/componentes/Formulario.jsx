@@ -32,8 +32,6 @@ export default function Formulario({ addAlert, setData, data }) {
       setDatosColaborador({ ...datosColaborador, telefono: e.target.value });
     }
 
-    //setDatosColaborador({ ...datosColaborador, id: (parseInt(data[data.length-1].id)+1).toString()});
-
     console.log(datosColaborador);
 
   }
@@ -80,9 +78,6 @@ export default function Formulario({ addAlert, setData, data }) {
 
       const newId = (parseInt(data[data.length - 1].id) + 1).toString();
 
-      //datosColaborador.id = (parseInt(data[data.length-1].id)+1).toString()
-
-      //setData([...data,datosColaborador])
 
       setData([...data, { ...datosColaborador, id: newId }]);
 
@@ -95,10 +90,6 @@ export default function Formulario({ addAlert, setData, data }) {
       });
 
     }
-
-    //console.log(addAlert);
-
-    //console.log(data);
 
   }
 
@@ -119,23 +110,23 @@ export default function Formulario({ addAlert, setData, data }) {
       <form noValidate onSubmit={(e) => validandoDatos(e)}>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="text" className="form-control" id="inputNombre" placeholder="Nombre del colaborador" />
+          <input onChange={(e) => handlerInputs(e)} value={datosColaborador.nombre} type="text" className="form-control" id="inputNombre" placeholder="Nombre del colaborador" />
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="email" className="form-control" id="inputEmail" placeholder="Email del colaborador" pattern=".*" />
+          <input onChange={(e) => handlerInputs(e)} value={datosColaborador.correo} type="email" className="form-control" id="inputEmail" placeholder="Email del colaborador" pattern=".*" />
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="number" className="form-control" id="inputEdad" placeholder="Edad del colaborador" />
+          <input onChange={(e) => handlerInputs(e)} value={datosColaborador.edad} type="number" className="form-control" id="inputEdad" placeholder="Edad del colaborador" />
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="text" className="form-control" id="inputCargo" placeholder="Cargo del colaborador" />
+          <input onChange={(e) => handlerInputs(e)} value={datosColaborador.cargo} type="text" className="form-control" id="inputCargo" placeholder="Cargo del colaborador" />
         </div>
 
         <div className="mb-3">
-          <input onChange={(e) => handlerInputs(e)} type="text" className="form-control" id="inputTelefono" placeholder="Teléfono del colaborador" />
+          <input onChange={(e) => handlerInputs(e)} value={datosColaborador.telefono} type="text" className="form-control" id="inputTelefono" placeholder="Teléfono del colaborador" />
         </div>
 
         <div className="d-grid mb-3">
