@@ -29,7 +29,7 @@ export default function Listado({ data, setData, dataFilter, setDataFilter }) {
   ));
 
   return (
-    <div className="table-responsive col-12 col-lg-8 ">
+    <div className="table-responsive col-12 col-lg-8 mb-2">
       <table className="table">
         <thead>
           <tr>
