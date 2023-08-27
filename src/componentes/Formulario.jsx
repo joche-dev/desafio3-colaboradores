@@ -1,43 +1,44 @@
-import React from 'react'
+import React from 'react';
 
 import { useState, useEffect } from 'react';
 
-export default function Formulario({ addAlert, setData, data }) {
-
+export default function Formulario({
+  addAlert,
+  setData,
+  data,
+  setDataFilter,
+  dataFilter,
+}) {
   const [datosColaborador, setDatosColaborador] = useState({
-    nombre: "",
-    correo: "",
-    edad: "",
-    cargo: "",
-    telefono: ""
+    nombre: '',
+    correo: '',
+    edad: '',
+    cargo: '',
+    telefono: '',
   });
 
   function handlerInputs(e) {
-
-    if (e.target.id === "inputNombre") {
+    if (e.target.id === 'inputNombre') {
       setDatosColaborador({ ...datosColaborador, nombre: e.target.value });
     }
 
-    if (e.target.id === "inputEmail") {
+    if (e.target.id === 'inputEmail') {
       setDatosColaborador({ ...datosColaborador, correo: e.target.value });
     }
 
-    if (e.target.id === "inputEdad") {
+    if (e.target.id === 'inputEdad') {
       setDatosColaborador({ ...datosColaborador, edad: e.target.value });
     }
-    if (e.target.id === "inputCargo") {
+    if (e.target.id === 'inputCargo') {
       setDatosColaborador({ ...datosColaborador, cargo: e.target.value });
     }
-    if (e.target.id === "inputTelefono") {
+    if (e.target.id === 'inputTelefono') {
       setDatosColaborador({ ...datosColaborador, telefono: e.target.value });
     }
-
-    console.log(datosColaborador);
 
   }
 
   function validandoDatos(e) {
-
     e.preventDefault();
 
     const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -73,42 +74,42 @@ export default function Formulario({ addAlert, setData, data }) {
         texto: 'Colaborador Agregado',
         tipo: 'alert-success',
         estado: true,
-      }
-      );
 
-      const newId = (parseInt(data[data.length - 1].id) + 1).toString();
-
-
-      setData([...data, { ...datosColaborador, id: newId }]);
-
-      setDatosColaborador({
-        nombre: "",
-        correo: "",
-        edad: "",
-        cargo: "",
-        telefono: ""
       });
 
+      const newId = data.length
+        ? (parseInt(data[data.length - 1].id) + 1).toString()
+        : '0';
+
+      setData([...data, { ...datosColaborador, id: newId }]);
+      setDataFilter([...dataFilter, { ...datosColaborador, id: newId }]);
+
+      setDatosColaborador({
+        nombre: '',
+        correo: '',
+        edad: '',
+        cargo: '',
+        telefono: '',
+      });
     }
 
   }
 
   useEffect(() => {
     setDatosColaborador({
-      nombre: "",
-      correo: "",
-      edad: "",
-      cargo: "",
-      telefono: ""
+      nombre: '',
+      correo: '',
+      edad: '',
+      cargo: '',
+      telefono: '',
     });
   }, [data]);
 
   return (
-    <div className='formulario col-12 col-lg-4'>
+    <div className="formulario col-12 col-lg-4">
       <h3>Agregar Colaborador</h3>
 
       <form noValidate onSubmit={(e) => validandoDatos(e)}>
-
         <div className="mb-3">
           <input onChange={(e) => handlerInputs(e)} value={datosColaborador.nombre} type="text" className="form-control" id="inputNombre" placeholder="Nombre del colaborador" />
         </div>
@@ -130,11 +131,11 @@ export default function Formulario({ addAlert, setData, data }) {
         </div>
 
         <div className="d-grid mb-3">
-          <button type="submit" className="btn">Agregar Colaborador</button>
+          <button type="submit" className="btn">
+            Agregar Colaborador
+          </button>
         </div>
-
       </form>
-
     </div>
-  )
+  );
 }

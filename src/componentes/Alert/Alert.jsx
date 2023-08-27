@@ -7,7 +7,7 @@ export default function Alert({alerta}) {
 
   return (
     <>
-    <div className={`alert ${estado ? tipo : 'display-none'} mt-1`}>
+    <div className={`alert col-12 col-lg-4 ${estado ? tipo : 'display-none'} mt-1`}>
       {texto}
     </div>
     </>
